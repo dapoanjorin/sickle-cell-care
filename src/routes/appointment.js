@@ -29,9 +29,7 @@ router.get("/", authenticate, async (req, res) => {
         //     return res.status(403).json({ message: "Unauthorized" });
         // }
 
-        appointments = await Appointment.findAll({
-            order: [["appointmentDate", "ASC"]],
-        });
+        appointments = await Appointment.findAll();
 
         res.json({appointments});
     } catch (error) {
