@@ -52,6 +52,10 @@ router.post("/", authenticate, async (req, res) => {
 
         const {doctorId, appointmentDate, notes} = req.body;
 
+        console.log("creating appointment")
+        console.log(doctorId)
+        console.log(appointmentDate)
+
         if (!doctorId || !appointmentDate) {
             return res.status(400).json({message: "Doctor ID and appointment date are required"});
         }
