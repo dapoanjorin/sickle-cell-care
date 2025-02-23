@@ -1,5 +1,5 @@
 const express = require("express");
-const { authenticateJWT } = require("../middleware/auth");
+const { authenticate } = require("../middleware/auth");
 const { Alert, Doctor } = require("../models");
 
 const router = express.Router();
@@ -55,7 +55,7 @@ const generateIoTData = () => ({
 });
 
 // Endpoint to simulate IoT data
-router.get("/simulate", authenticateJWT, async (req, res) => {
+router.get("/simulate", authenticate, async (req, res) => {
     try {
         if (req.user.role !== "patient") {
             return res.status(403).json({ message: "Only patients can submit IoT data" });
