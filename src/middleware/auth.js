@@ -29,6 +29,9 @@ const authenticate = (req, res, next) => {
         if (err || !user) {
             return res.status(401).json({ message: "Unauthorized: Invalid or expired token" });
         }
+
+        console.log("debugging jwt")
+        console.log(user)
         req.user = user;
         next();
     })(req, res, next);

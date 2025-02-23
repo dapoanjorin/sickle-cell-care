@@ -28,9 +28,9 @@ router.get("/", authenticate, async (req, res) => {
         // } else {
         //     return res.status(403).json({ message: "Unauthorized" });
         // }
-
+        //
         appointments = await Appointment.findAll();
-
+        //
         res.json({appointments});
     } catch (error) {
         res.status(500).json({error: error.message});
@@ -43,10 +43,12 @@ router.get("/", authenticate, async (req, res) => {
  * @access Protected (Patients only)
  */
 router.post("/", authenticate, async (req, res) => {
+
+    console.log(req.user);
     try {
-        if (req.user.role !== "patient") {
-            return res.status(403).json({message: "Only patients can book appointments"});
-        }
+        // if (req.user.role !== "patient") {
+        //     return res.status(403).json({message: "Only patients can book appointments"});
+        // }
 
         const {doctorId, appointmentDate, notes} = req.body;
 
