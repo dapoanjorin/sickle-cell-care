@@ -8,6 +8,7 @@ const authRoutes = require('./routes/auth');
 const patientRoutes = require('./routes/patient');
 const doctorRoutes = require("./routes/doctor");
 const iotRoutes = require("./routes/iot");
+const appointmentRoutes = require("./routes/appointment");
 
 // Load environment variables
 dotenv.config();
@@ -39,6 +40,7 @@ app.use('/api/auth', authRoutes);
 app.use("/api/patients", patientRoutes);
 app.use("/api/doctors", doctorRoutes);
 app.use("/api/iot", iotRoutes);
+app.use("/api/appointment", appointmentRoutes);
 
 app.get('/', (req, res) => {
     res.send('SickleCell API is running');
